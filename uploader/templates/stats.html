@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css_head %}
+    <style>
+        #images {
+            text-align: center;
+            margin: 50px auto;
+        }
+        #images figure {
+            border: 1px solid #000000;
+            background: #dddddd;
+            display:inline-block;
+            margin: 5px 5px;
+        }
+        #images figcaption {
+            border-top: 1px solid #000000;
+            background-color: #ffffff;
+        }
+        #images a {
+            text-decoration: none;
+            color: #000000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend><i class="fas fa-pie-chart" style="color: purple;"></i> Statistics for:</legend>
+        <div class="col_12"><h4><strong>{{ lidar_file.name }}</strong></h4></div>
+        <div id="images">
+            <figure>
+                <a href="/media/rasters/{{ intensity | safe }}">
+                    <img src="/media/rasters/{{ intensity | safe }}"
+                         width="500"
+                         height="500"/>
+                </a>
+                <figcaption>Intensity</figcaption>
+            </figure>
+            <figure>
+                <a href="/media/rasters/{{ scatter | safe }}">
+                    <img src="/media/rasters/{{ scatter | safe }}"
+                         width="500"
+                         height="500"/>
+                </a>
+                <figcaption>Scatter Plot of Points</figcaption>
+            </figure>
+            <figure>
+                <a href="/media/rasters/{{ contour | safe }}">
+                    <img src="/media/rasters/{{ contour | safe }}"
+                         width="500"
+                         height="500"/>
+                </a>
+                <figcaption>Contour Map</figcaption>
+            </figure>
+        </div>
+{#    </fieldset>#}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% block css_head %}
+{% endblock %}
+{% block content %}
+    <fieldset>
+        <legend><i class="fas fa-file-alt"></i> Upload .las files:</legend>
+        <form method="post" enctype="multipart/form-data" class="center">
+            {% csrf_token %}
+            {% for field in file_form %}
+                {% if field.errors %}
+                    <div class="error">
+                    {% for error in field.errors %}
+                        <p><strong style="color: red;">{{ error }}</strong></p>
+                    {% endfor %}
+                    </div>
+                    {{ field.label_tag }}
+                    {% render_field field class="error" %}
+                {% else %}
+                    {{ field.label_tag }}
+                    {{ field }}
+                {% endif %}
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend><i class="fas fa-database"></i> LiDAR Database:</legend>
+        {% for data in lidar_data %}
+            <div>
+                <a href="{% url 'stats' data.id %}">{{ data }}</a> ~
+                {{ data.group }} ~
+                {{ data.point_count | intcomma }} points ~
+                {{ data.file_size | filesizeformat }}
+                <a href="{% url 'delete' data.id %}"
+                   onclick="if (!confirm('Are you sure you want to delete this file?')) return false;">
+                   <i class="fas fa-ban" style="color: red;"></i></a>
+            </div>
+        {% endfor %}
+    </fieldset>
+{% endblock %}
+

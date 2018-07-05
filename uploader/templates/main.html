@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LiDAR HUB</title>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'HTML-KickStart-master/css/kickstart.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'HTML-KickStart-master/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-free-5.1.0-web/css/all.css' %}">
+    {% block css_head %}{% endblock %}
+    <!-- JS -->
+    <script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'HTML-KickStart-master/js/kickstart.js' %}"></script>
+    {% block js_head %}{% endblock %}
+</head>
+<body>
+    <div class="grid">
+        <div class="col_12" style="margin-top: 13px">
+            <div class="col_12">
+                <h3 class="">
+                    <a style="text-decoration: none; color: black" href="">
+                        <i style="color: #2050C0" class="fab fa-hubspot"></i> LiDAR HUB
+                    </a>
+                </h3>
+            </div>
+            <div class="col_8">
+                <ul class="button-bar">
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'lidar_map' %}"><i class="fas fa-map"></i> Map</a></li>
+                    <li><a href="/admin/"><i class="fas fa-user"></i> Admin</a></li>
+                </ul>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

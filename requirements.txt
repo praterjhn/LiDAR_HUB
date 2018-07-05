@@ -1,0 +1,9 @@
+# PostGIS
+django
+psycopg2
+laspy
+pygdal==2.2.2.3
+matplotlib
+scipy
+django-widget-tweaks
+django-cleanup
